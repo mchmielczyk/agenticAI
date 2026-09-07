@@ -1,4 +1,24 @@
 import os
+schema_write_file = {
+    "type" : "function",
+    "function" : {
+        "name" : "write_file",
+        "description" : "writes to file relative to working directory specified by file path and return info about sucess of this operation",
+        "parameters":{
+            "type":"object",
+            "properties":{
+                "file_path":{
+                    "type":"string",
+                    "description": "file to read path, relative to the working directory",
+                },
+                "content":{
+                    "type":"str",
+                    "description": "input chars to be written in specified file",
+                },
+            },
+        },
+    },
+}
 def write_file(working_directory: str, file_path: str, content: str) -> str:
     try:
         target_dir=os.path.normpath(os.path.join(os.path.abspath(working_directory),file_path))
