@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.12.10
+    hooks:
+      - id: uv-lock
+        args: [--project, agenty]
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.6
+    hooks:
+      - id: ruff-check
+        files: ^agenty/
+      - id: ruff-format
+        files: ^agenty/
+  - repo: https://github.com/RobertCraigie/pyright-python
+    rev: v1.1.411
+    hooks:
+      - id: pyright
+        args: [agenty]
+        additional_dependencies:
+          - openai==2.44.0
+          - python-dotenv==1.1.0
